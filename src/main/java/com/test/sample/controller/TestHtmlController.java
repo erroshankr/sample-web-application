@@ -1,5 +1,8 @@
 package com.test.sample.controller;
 
+import com.test.sample.models.Student;
+import com.test.sample.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

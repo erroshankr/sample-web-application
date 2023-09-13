@@ -1,15 +1,17 @@
 package com.test.sample.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "student_details")
 public class Student {
 
+    @Column(name = "stud_name")
     private String name;
     private String branch;
     @Id
-    private String studID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long studID;
 
 
     public String getName() {
@@ -28,11 +30,11 @@ public class Student {
         this.branch = branch;
     }
 
-    public String getStudID() {
+    public long getStudID() {
         return studID;
     }
 
-    public void setStudID(String studID) {
+    public void setStudID(long studID) {
         this.studID = studID;
     }
 }
