@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController // It just return simple java data type
+@RestController // It just returns simple java data type
 public class TestJsonController {
 
     @Autowired
@@ -16,7 +16,7 @@ public class TestJsonController {
 
     @GetMapping("/readFromString")
     public String testAppUsingString(){
-        return "demo";
+        return "student";
     }
 
 
