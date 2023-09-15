@@ -1,5 +1,6 @@
 package com.test.sample.controller;
 
+import com.test.sample.models.Admin;
 import com.test.sample.models.Student;
 import com.test.sample.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,17 @@ public class TestHtmlController {
 
     @Autowired
     private StudentRepository studentRepository;
+    @GetMapping("/")
+    public String home(Model model){
+        model.addAttribute("admin", new Admin());
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(Model model){
+        return "home";
+    }
+
     @GetMapping("/register")
     public String testApp(Model model){
         model.addAttribute("student", new Student());
