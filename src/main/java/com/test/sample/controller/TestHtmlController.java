@@ -45,6 +45,16 @@ public class TestHtmlController {
 
 }
 
+//Github.com --> Repository --> master : origin/master
+
+//clone : local master-> origin:master
+// create a branch from master e.g test
+//make ur changes
+//commit ur changes and make sure it's only ur changes, nothing else
+//push ur branch to repository
+//create a pull request with master branch
+
+
 
 //Get: to Read data
 //POST: Form submit
