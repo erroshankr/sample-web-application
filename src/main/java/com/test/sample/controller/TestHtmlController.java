@@ -43,7 +43,20 @@ public class TestHtmlController {
         return "success";
     }
 
+    @PostMapping("/saveAll")
+    public String saveAllStudent(@ModelAttribute Student student){
+        System.out.println(student.getName());
+        studentRepository.save(student);
+        return "success";
+    }
+
 }
+
+
+//Github.com --> Repository --> master : origin/master
+
+//clone : local master-> master
+
 
 
 //Get: to Read data
