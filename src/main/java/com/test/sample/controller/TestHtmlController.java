@@ -28,11 +28,9 @@ public class TestHtmlController {
         return "home";
     }
 
-    @GetMapping("/register")
+    @PostMapping("/create")
     public String testApp(Model model){
         model.addAttribute("student", new Student());
-       /* List<Student> res = (List<Student>) studentRepository.findAll();
-        model.addAttribute("student", res.get(0));*/
         return "student";
     }
 
@@ -67,3 +65,12 @@ public class TestHtmlController {
 //Hibernate :--> ORM --> Object Relational Mapping
 //Driver :
 //ORM : It maps java object with Database table
+
+//Homework:
+
+//1. Create -> Bapi
+//2. UpdateStudentByID: Anupam
+//3. Delete Student by ID: Tushar
+//4. Fetch Student by ID:  Sneha
+//5.Fetch All: Ashwani
+//6.Delete All: Vaibhav

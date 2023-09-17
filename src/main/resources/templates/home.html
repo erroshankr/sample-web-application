@@ -16,25 +16,36 @@
 <div class="container">
     <div class="title">Admin Option</div>
     <div class="content">
-        <form action="#">
+        <form th:action="@{/create}" class="register-form" id="create" method="post">
             <div class="button">
                 <input type="submit" value="Create Student">
             </div>
+        </form>
+        <form th:action="@{/updateByID}" class="register-form" id="updateByID" method="post">
             <div class="button">
-                <input type="submit" value="Update Student by ID">
+                <input type="submit" value="Update Student By ID">
             </div>
+        </form>
+        <form th:action="@{/deleteByID}" class="register-form" id="deleteByID" method="post">
             <div class="button">
-                <input type="submit" value="Delete Student by ID">
+                <input type="submit" value="Delete Student By ID">
             </div>
+        </form>
+        <form th:action="@{/fetchByID}" class="register-form" id="fetchByID" method="post">
             <div class="button">
-                <input type="submit" value="Fetch By ID">
+                <input type="submit" value="Fetch Student By ID">
             </div>
+        </form>
+        <form th:action="@{/fetchAll}" class="register-form" id="fetchAll" method="post">
             <div class="button">
-                <input type="submit" value="Fetch ALL Records">
+                <input type="submit" value="Fetch All Students">
             </div>
+        </form>
+        <form th:action="@{/deleteAll}" class="register-form" id="deleteAll" method="post">
             <div class="button">
-                <input type="submit" value="Delete ALL Records">
+                <input type="submit" value="Delete All Students">
             </div>
+        </form>
         </form>
     </div>
 </div>
