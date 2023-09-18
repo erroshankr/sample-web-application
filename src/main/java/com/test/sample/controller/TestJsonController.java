@@ -2,9 +2,9 @@ package com.test.sample.controller;
 
 import com.test.sample.models.Student;
 import com.test.sample.repository.StudentRepository;
+import com.test.sample.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,7 +12,10 @@ import java.util.List;
 public class TestJsonController {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping("/readFromString")
     public String testAppUsingString(){
@@ -42,6 +45,16 @@ public class TestJsonController {
             return "No data present";
         }
         return res;
+    }
+
+    @PostMapping("/addStudent")
+    public Student postDetails(@RequestBody Student student){
+        return studentService.saveDetails(student);
+    }
+
+    @GetMapping("/fetchByID/{studID}")
+    public Student fetchDetailsById(@PathVariable String studID){
+        return studentService.getdetailsById(studID);
     }
 
     @GetMapping("/updateStudent")
