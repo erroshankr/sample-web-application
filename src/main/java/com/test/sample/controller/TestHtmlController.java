@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller // It renders html page
 public class TestHtmlController {
@@ -41,6 +44,26 @@ public class TestHtmlController {
         return "success";
     }
 
+    @GetMapping("/fetchAll")
+    public String fetchAll(Model model){
+      //  model.addAttribute("admin", new Admin());
+        List<Student> students = (List<Student>) studentRepository.findAll();
+        model.addAttribute("datas",students);
+        return "data";
+    }
+
+    @GetMapping("/fetchByID/{studID}") // localhost:3080/fetchbyID/103
+    public String fetchDetailsById(@PathVariable String studID, Model model) {
+         Optional<Student> data = studentRepository.findById(studID);
+         if (data.isEmpty()){
+             return "failure";
+         }
+         List<Student> students = new ArrayList<>();
+         students.add(data.get());
+         model.addAttribute("datas",students);
+         return "data";
+    }
+
 }
 
 //Github.com --> Repository --> master : origin/master
@@ -68,9 +91,9 @@ public class TestHtmlController {
 
 //Homework:
 
-//1. Create -> Bapi
+//1. Create -> Bapi : working
 //2. UpdateStudentByID: Anupam
 //3. Delete Student by ID: Tushar
 //4. Fetch Student by ID:  Sneha
-//5.Fetch All: Ashwani
-//6.Delete All: Vaibhav
+//5.Fetch All: Ashwani : working
+//6.Delete All: Vaibhav : working
