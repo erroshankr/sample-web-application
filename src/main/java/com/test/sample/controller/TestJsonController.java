@@ -2,11 +2,13 @@ package com.test.sample.controller;
 
 import com.test.sample.models.Student;
 import com.test.sample.repository.StudentRepository;
-import com.test.sample.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController // It just returns simple java data type
 public class TestJsonController {
@@ -14,17 +16,14 @@ public class TestJsonController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @Autowired
-    private StudentService studentService;
-
     @GetMapping("/readFromString")
-    public String testAppUsingString(){
+    public String testAppUsingString() {
         return "student";
     }
 
 
     @GetMapping("/createStudent")
-    public String createStudent(){
+    public String createStudent() {
         Student student = new Student();
         student.setName("Rakesh");
         student.setBranch("ECE");
@@ -34,41 +33,48 @@ public class TestJsonController {
     }
 
     @GetMapping("/fetchStudent")
-    public String fetchStudent(){
+    public String fetchStudent() {
 
         String res = "";
         List<Student> students = (List<Student>) studentRepository.findAll();
-        for (Student student: students) {
-            res += student.getName() +  " " + student.getBranch() + " " + student.getStudID() + '\n';
+        for (Student student : students) {
+            res += student.getName() + " " + student.getBranch() + " " + student.getStudID() + '\n';
         }
-        if (res.isEmpty()){
+        if (res.isEmpty()) {
             return "No data present";
         }
         return res;
     }
 
     @PostMapping("/addStudent")
-    public Student postDetails(@RequestBody Student student){
-        return studentService.saveDetails(student);
+    public Student postDetails(@RequestBody Student student) {
+        return studentRepository.save(student);
     }
 
-    @GetMapping("/fetchByID/{studID}")
-    public Student fetchDetailsById(@PathVariable String studID){
-        return studentService.getdetailsById(studID);
+    //@GetMapping("/fetchByID/{studID}")
+    public String fetchDetailsById(Model model, @PathVariable String studID) {
+        Optional<Student> opt = studentRepository.findById(studID);
+        if (opt.isPresent()) {
+            List<Student> studentList = new ArrayList<>();
+            studentList.add(opt.get());
+            model.addAttribute("datas", studentList);
+            return "data";
+        }
+        return "failure";
     }
 
     @GetMapping("/updateStudent")
-    public String updateStudent(){
+    public String updateStudent() {
         return "demo";
     }
 
     @GetMapping("/deleteStudent")
-    public String deleteStudent(){
+    public String deleteStudent() {
         return "demo";
     }
 
     @GetMapping("/deleteAllStudent")
-    public String deleteAllStudent(){
+    public String deleteAllStudent() {
         studentRepository.deleteAll();
         return "success";
     }

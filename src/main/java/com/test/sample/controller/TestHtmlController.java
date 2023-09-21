@@ -36,10 +36,7 @@ public class TestHtmlController {
         model.addAttribute("student", new Student());
         return "student";
     }
-    @PostMapping("/fetchByID")
-    public String fetchStudent(@ModelAttribute Student student){
-        return "success";
-    }
+
     @PostMapping("/save")
     public String saveStudent(@ModelAttribute Student student){
         System.out.println(student.getName());
@@ -52,6 +49,7 @@ public class TestHtmlController {
       //  model.addAttribute("admin", new Admin());
         List<Student> students = (List<Student>) studentRepository.findAll();
         model.addAttribute("datas",students);
+        model.addAttribute("student", new Student());
         return "data";
     }
 
