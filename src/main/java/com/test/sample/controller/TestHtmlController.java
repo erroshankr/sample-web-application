@@ -28,6 +28,9 @@ public class TestHtmlController {
 
     @PostMapping("/login")
     public String login(Model model){
+        model.addAttribute("student", new Student());
+        List<Student> students = (List<Student>) studentRepository.findAll();
+        model.addAttribute("datas",students);
         return "data";
     }
 
@@ -38,9 +41,12 @@ public class TestHtmlController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute Student student){
+    public String saveStudent(@ModelAttribute Student student , Model model){
         System.out.println(student.getName());
         studentRepository.save(student);
+        model.addAttribute("student", new Student());
+        List<Student> students = (List<Student>) studentRepository.findAll();
+        model.addAttribute("datas",students);
         return "data";
     }
 
