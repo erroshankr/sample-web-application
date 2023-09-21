@@ -28,20 +28,20 @@ public class TestHtmlController {
 
     @PostMapping("/login")
     public String login(Model model){
-        return "home";
+        return "data";
     }
 
     @PostMapping("/create")
     public String testApp(Model model){
         model.addAttribute("student", new Student());
-        return "student";
+        return "data";
     }
 
     @PostMapping("/save")
     public String saveStudent(@ModelAttribute Student student){
         System.out.println(student.getName());
         studentRepository.save(student);
-        return "success";
+        return "data";
     }
 
     @GetMapping("/fetchAll")
