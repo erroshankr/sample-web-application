@@ -21,18 +21,35 @@
         <div class="table-title">
             <div class="col-sm-8"><h2><b>Student Details</b></h2></div>
             <div class="row">
+                <form th:action="@{/save}"  id="register-form" method="post" th:object="${student}">
                 <div id="formContainer">
                     <label for="nameInput">Name:</label>
-                    <input type="text" id="nameInput" placeholder="Enter your name">
+                    <input type="text" id="nameInput" placeholder="Enter your name" th:field="*{name}">
+                    <label for="branch">Select Branch:</label>
+                    <select  id="branch" th:field="*{branch}">
+                        <option th:name="CSE" th:value="CSE"  th:text="CSE">CSE</option>
+                        <option th:name="IT" th:value="IT"  th:text="IT">IT</option>
+                        <option  th:name="ECE" th:value="ECE"  th:text="ECE">ECE</option>
+                        <option th:name="ME"  th:value="ME"  th:text="ME">ME</option>
+                    </select>
                     <label for="emailInput">Email Id:</label>
-                    <input type="email" id="emailInput" placeholder="Enter your email">
+                    <input type="email" id="emailInput" placeholder="Enter your email" th:field="*{emailID}">
                     <label for="numberInput">Mobile Details:</label>
-                    <input type="text" id="numberInput" placeholder="Enter your mobile details">
-                    <label for="addressInput">Address:</label>
-                    <textarea id="addressInput" placeholder="Enter your address"></textarea>
-                    <button onclick="addData()">Add</button>
+                    <input type="text" id="numberInput" placeholder="Enter your mobile details" th:field="*{mobileNum}">
+                    <label for="gender">Select Gender:</label>
+                    <select  id="gender" th:field="*{gender}">
+                        <option th:name="MALE" th:value="MALE"  th:text="MALE">MALE</option>
+                        <option th:name="FEMALE" th:value="FEMALE"  th:text="FEMALE">FEMALE</option>
+                        <option th:name="OTHERS"  th:value="OTHERS"  th:text="OTHERS">OTHERS</option>
+                    </select>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" placeholder="yyyy-MM-dd"  th:field="*{dob}">
+                   //<button onclick="addData()">Add</button>
+                    <input type="submit" name="register" id="register"  value="ADD"/>
                 </div>
+                </form>
             </div>
+
         </div>
         <table id="outputTable">
             <thead>
