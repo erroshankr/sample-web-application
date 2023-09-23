@@ -26,6 +26,7 @@
                 <form th:action="@{/save}"  id="register-form" method="post" th:object="${student}">
                 <div id="formContainer" style="display : inline-flex; justify-content: space-around;">
                     <div style="width: 45%;">
+                    <input type="text" id="studID" hidden="true" th:field="*{studID}">
                     <label for="nameInput">Name:</label>
                     <input type="text" id="nameInput" placeholder="Enter your name" th:field="*{name}">
                     <label for="numberInput">Mobile Details:</label>
@@ -49,7 +50,12 @@
                     </select>
                     <label for="dob">DoB</label>
                     <input type="date" id="dob" placeholder="yyyy-MM-dd"  th:field="*{dob}">
-                        <button>Submit</button>
+                        <div th:if="${edit}">
+                            <button>Edit</button>
+                        </div>
+                        <div th:unless="${edit}">
+                            <button>Submit</button>
+                        </div>
                     </div>
                     <!--<input type="submit" name="register" id="register"  value="Submit"/>-->
                 </div>
@@ -82,8 +88,8 @@
                     <td><th:block th:text="${data.mobileNum}"/></td>
                     <td><th:block th:text="${data.emailID}"/></td>
                     <td>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        <a th:href="@{'/editByID/' + ${data.studID}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a th:href="@{'/deleteByID/' + ${data.studID}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                     </td>
                 </tr>
             </th:block>
