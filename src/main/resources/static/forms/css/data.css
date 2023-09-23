@@ -20,6 +20,14 @@ body {
             border-radius: 4px;
         }
 
+        select {
+            width: 300px;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         button {
             margin: 10px;
             padding: 8px 16px;
