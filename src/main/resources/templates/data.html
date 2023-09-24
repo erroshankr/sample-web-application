@@ -26,7 +26,7 @@
                 <form th:action="@{/save}"  id="register-form" method="post" th:object="${student}">
                 <div id="formContainer" style="display : inline-flex; justify-content: space-around;">
                     <div style="width: 45%;">
-                    <input type="text" id="studID" hidden="true" th:field="*{studID}">
+                    <input type="text" id="studID" hidden="false" th:field="*{studID}">
                     <label for="nameInput">Name:</label>
                     <input type="text" id="nameInput" placeholder="Enter your name" th:field="*{name}">
                     <label for="numberInput">Mobile Details:</label>

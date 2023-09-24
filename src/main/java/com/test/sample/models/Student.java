@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "student_details")
-public class Student {
+public class Student { //ORM --> Object Relational Mapping
 
     @Column(name = "stud_name")
     private String name;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Controller // It renders html page
+@Controller // It renders html page  CREATE, REMOVE, FETCH, DELETE
 public class TestHtmlController {
 
     @Autowired
@@ -69,6 +69,31 @@ public class TestHtmlController {
          students.add(data.get());
          model.addAttribute("datas",students);
          return "data";
+    }
+
+    @GetMapping("/editByID/{studID}") // localhost:3080/editByID/103
+    public String editDetailsById(@PathVariable String studID, Model model) {
+        Optional<Student> data = studentRepository.findById(studID);
+        if (data.isEmpty()){
+            return "failure";
+        }
+        Student student = data.get();
+        List<Student> students = (List<Student>) studentRepository.findAll();
+        model.addAttribute("datas",students);
+        model.addAttribute("student", student);
+        model.addAttribute("edit",true);
+        return "data";
+    }
+
+    @GetMapping("/deleteByID/{studID}") // localhost:3080/editByID/103
+    public String deleteDetailsById(@PathVariable String studID, Model model) {
+        Optional<Student> data = studentRepository.findById(studID);
+        if (data.isEmpty()){
+            return "failure";
+        }
+        Student student = data.get();
+        studentRepository.deleteById(String.valueOf(student.getStudID()));
+        return "redirect:/fetchAll";
     }
 
 }

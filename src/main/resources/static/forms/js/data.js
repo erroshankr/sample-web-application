@@ -1,3 +1,4 @@
+/*
  function addData() {
         // Get input values
         let name =
@@ -74,4 +75,4 @@
         document.getElementById("emailInput").value = "";
         document.getElementById("numberInput").value = "";
         document.getElementById("addressInput").value = "";
-    }
+    }*/
