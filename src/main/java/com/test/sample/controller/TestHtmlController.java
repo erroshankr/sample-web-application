@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +52,17 @@ public class TestHtmlController {
     }
 
     @GetMapping("/fetchAll")
-    public String fetchAll(Model model){
-      //  model.addAttribute("admin", new Admin());
+    public String fetchAll(Model model, @ModelAttribute(name = "student", binding = true ) Student student, @ModelAttribute(name = "edit", binding = true) String edit){
+
+        boolean flag = false;
+        if (student != null){
+            System.out.println("control from edit api");
+            flag = Boolean.valueOf(edit);
+        }
         List<Student> students = (List<Student>) studentRepository.findAll();
         model.addAttribute("datas",students);
-        model.addAttribute("student", new Student());
+        model.addAttribute("student", student);
+        model.addAttribute("edit", flag);
         return "data";
     }
 
@@ -71,18 +78,25 @@ public class TestHtmlController {
          return "data";
     }
 
-    @GetMapping("/editByID/{studID}") // localhost:3080/editByID/103
-    public String editDetailsById(@PathVariable String studID, Model model) {
+    //String: immutable :
+    // int num = 105; String str= "105";
+    // num + 1--> 106, str + 5 = 1051 , f7645764f76f4876v55i55855
+    // 'a' + 'b' = X - Y
+    @GetMapping("/editByID/{studID}") // studID = "style.css" , "852"
+    public String editDetailsById(@PathVariable String studID, Model model, RedirectAttributes redirect) {
         Optional<Student> data = studentRepository.findById(studID);
         if (data.isEmpty()){
             return "failure";
         }
         Student student = data.get();
-        List<Student> students = (List<Student>) studentRepository.findAll();
-        model.addAttribute("datas",students);
-        model.addAttribute("student", student);
-        model.addAttribute("edit",true);
-        return "data";
+      //  List<Student> students = (List<Student>) studentRepository.findAll();
+       //  model.addAttribute("datas",students);
+       // model.addAttribute("student", student);
+       // model.addAttribute("edit",true);
+
+        redirect.addFlashAttribute("student", student);
+        redirect.addFlashAttribute("edit",true);
+        return "redirect:/fetchAll";
     }
 
     @GetMapping("/deleteByID/{studID}") // localhost:3080/editByID/103
