@@ -1,2 +1,2 @@
-# student-dropout-analysis
-student-dropout-analysis
+# sample-web-application
+sample-web-application
