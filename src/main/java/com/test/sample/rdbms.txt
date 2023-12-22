@@ -1,0 +1,47 @@
+// RDBMS : Relational Database Management System
+
+// sendTo:256 bytes.
+// Payment Amount: 100000
+// sendFrom: 256 bytes
+// PIN
+//Remarks: 256 bytes
+
+sendFrom: roshan@hdfc
+sendTo: vaibhav@icici
+amount: 100
+PIN:
+
+ID       POST_TEXT
+rosh123  Beautiful
+abcd123  jkgjgkjagsmkhshgcldhvjt,hjfk,dhmv,tcjhkfkdfmuthbkhjvfbmfghvhbgmhvhcvxfvnbmxdcncmnhxkmvht,cl
+jgjg353  gfhgfghhfghfhgfghfhgfhgfhfhgfghjfghfghfghfghfhg
+         kghjkghjkgjkhgjkgkhjgkhjgkhgkhgkhgkhgkhjgkhjgkgkh
+         kjhgfjhfghjfgjhfjhfjhfjhfjfjfjhfjhgfjfjhgfghjfghjf
+
+HDFC     NPCI      ICICI
+
+// Verification:
+// Transaction:
+1.HDFC --> NPCI --> ICICI : NPCI-> Single Point of failure
+2. HDFC <--> NPCI(authentication) : authentication
+
+SQL : Structured Query language : Immediate Consistency, JOIN QUERY
+NoSQL: Non Structured Query Language : Cassandra, MondoDb,AmazonS3, GRaphQL : Eventual Consistency, JOINS are not in-built
+
+CAP: Consistency, Availability, Partition Tolerance
+CAP Theorem:
+Consistency : Immediate & Eventual
+RDBMS: MySQL, Oracle, S4Hana, Postgres : Relational->tables are related.
+
+ followeeID, followerID,timstamp
+ 123 , 345, 12 May 4.50PM
+ 123   456, 12 May, 5.15PM
+
+Queries in MySQL: SELECT, CREATE, UPDATE, DELETE, JOIN, WHEREAS, IN
+
+
+ACID :
+ Atomicity
+ Consistency
+ Isolation
+ Durability
