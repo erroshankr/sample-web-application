@@ -45,3 +45,16 @@ ACID :
  Consistency
  Isolation
  Durability
+
+
+Card Number: 1234567890123456 : Paypal --> alpha numeric token : Tokenization
+cvv: 123
+exp: 12/24
+name: Roshan
+
+payment-token: Rosh1234
+
+Tokenization
+Pre-authorization
+Authorization : debit--> reserve 100
+Capture: Fail

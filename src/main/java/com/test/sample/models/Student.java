@@ -3,7 +3,7 @@ package com.test.sample.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student_details")
+@Table(name = "students")
 public class Student { //ORM --> Object Relational Mapping
 
     @Column(name = "stud_name")
