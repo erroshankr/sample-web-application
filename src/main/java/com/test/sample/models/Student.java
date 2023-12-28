@@ -78,4 +78,22 @@ public class Student { //ORM --> Object Relational Mapping
     public void setStudID(long studID) {
         this.studID = studID;
     }
+
+
+    public static void main(String[] args) {
+        int a=5;
+        if (a%2 == 0){  // 1st
+            System.out.println("Even Number");
+        }else{
+            System.out.println("Odd Number");
+        }
+
+        if (a%2 != 0){ // 2nd
+            System.out.println("Odd Number");
+        }else{
+            System.out.println("Even Number");
+        }
+
+    }
 }
+
